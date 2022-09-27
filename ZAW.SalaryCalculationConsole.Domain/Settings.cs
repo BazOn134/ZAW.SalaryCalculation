@@ -8,7 +8,7 @@ namespace ZAW.SalaryCalculationConsole.Domain
 {
     public static class Settings
     {
-        /// <summary>Колличество рабочих часов в неделю</summary>
+        /// <summary>Колличество рабочих часов в месяц</summary>
         public static byte WORK_HOURS_IN_MONTH = 160;
 
 
