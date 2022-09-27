@@ -10,8 +10,9 @@ namespace ZAW.SalaryCalculationConsole.Domain.Person
     {
         public decimal MonthSallery { get; }
 
-        public Staff(string name) : base(name)
+        public Staff( string name, decimal monthSallery, List<TimeRecord> timeRecords) : base(name, timeRecords)
         {
+            MonthSallery = monthSallery;
         }
     }
 }

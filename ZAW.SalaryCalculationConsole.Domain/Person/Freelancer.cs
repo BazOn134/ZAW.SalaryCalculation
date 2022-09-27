@@ -8,7 +8,7 @@ namespace ZAW.SalaryCalculationConsole.Domain.Person
 {
     public class Freelancer : Person
     {
-        public Freelancer(string name) : base(name)
+        public Freelancer(string name, List<TimeRecord> timeRecords) : base(name, timeRecords)
         {
         }
     }

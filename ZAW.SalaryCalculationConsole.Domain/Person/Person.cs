@@ -9,10 +9,12 @@ namespace ZAW.SalaryCalculationConsole.Domain.Person
     public class Person
     {
         public string Name { get; }
+        public  List<TimeRecord> TimeRecords { get; }
 
-        public Person(string name)
+        public Person(string name, List<TimeRecord> timeRecords)
         {
             Name = name;
+            TimeRecords = timeRecords;
         }
 
     }

@@ -10,5 +10,9 @@ namespace ZAW.SalaryCalculationConsole.Domain
     {
         /// <summary>Колличество рабочих часов в неделю</summary>
         public static byte WORK_HOURS_IN_MONTH = 160;
+
+
+        /// <summary>Колличество рабочих часов в день</summary>
+        public static byte WORK_HOURS_IN_DAY = 8;
     }
 }

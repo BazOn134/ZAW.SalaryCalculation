@@ -8,7 +8,7 @@ namespace ZAW.SalaryCalculationConsole.Domain.Person
 {
     internal class Emploee : Staff
     {
-        public Emploee(string name) : base(name)
+        public Emploee(string name, List<TimeRecord> timeRecords) : base(name, 160000, timeRecords)
         {
         }
     }

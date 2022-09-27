@@ -8,8 +8,23 @@ namespace ZAW.SalaryCalculationConsole.Domain.Person
 {
     public class Manager : Staff
     {
-        public Manager(string name) : base(name)
+        public decimal MonthBonus => 20000;
+        public Manager(string name, List<TimeRecord> timeRecords) : base(name, 200000, timeRecords)
         {
+            decimal payPerHours = MonthSallery / Settings.WORK_HOURS_IN_MONTH;
+            decimal bonusPerDay = MonthBonus * Settings.WORK_HOURS_IN_MONTH * 8;
+            decimal totalPay = 0;
+            foreach (var timeRecord in timeRecords)
+            {
+                if (timeRecord.Hours <= 8)
+                {
+                    totalPay += timeRecord.Hours * payPerHours;
+                }
+                else
+                {
+                    totalPay += timeRecord.Hours * payPerHours + bonusPerDay;
+                }
+            }
         }
     }
 }
