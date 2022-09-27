@@ -8,14 +8,14 @@ namespace ZAW.SalaryCalculationConsole.Domain
 {
     public class TimeRecord
     {
-        public DateTime Time { get; }
+        public DateTime Date { get; }
         public string Name { get; }
         public byte Hours { get; }
         public string Message { get; }
 
-        public TimeRecord(DateTime time, string name, byte hours, string message)
+        public TimeRecord(DateTime date, string name, byte hours, string message)
         {
-            Time = time;
+            Date = date;
             Name = name;
             Hours = hours;
             Message = message;

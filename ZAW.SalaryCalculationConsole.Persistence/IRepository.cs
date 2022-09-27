@@ -5,10 +5,15 @@ namespace ZAW.SalaryCalculationConsole.Persistence
 {
     public interface IRepository
     {
+        List<User> Users();
+        List<TimeRecord> Emploees();
+        List<TimeRecord> Managers();
+        List<TimeRecord> Freelansers();
+        
         /// <summary>Создание пользователя</summary>
         /// <param name="Роль пользователя"></param>
         /// <param name="Имя пользователя"></param>
-        void UserCreate(UserRole userRole, string name);
+        bool UserCreate(UserRole userRole, string name);
         
         /// <summary>Получение пользователя</summary>
         /// <param name="Имя пользователя"></param>
