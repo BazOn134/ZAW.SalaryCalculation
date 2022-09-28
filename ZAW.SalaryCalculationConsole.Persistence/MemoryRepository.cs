@@ -8,26 +8,26 @@ using ZAW.SalaryCalculationConsole.Domain.Person;
 
 namespace ZAW.SalaryCalculationConsole.Persistence
 {
-    internal class MemoryRepository : IRepository
+    public class MemoryRepository : IRepository
     {
         #region FakeData
         List<TimeRecord> emploees = new List<TimeRecord>() {
-            new TimeRecord(DateTime.Now.AddDays(-3),"Иванов",8,"Иванов1"),
-            new TimeRecord(DateTime.Now.AddDays(-3),"Петров",8,"Петров1"),
-            new TimeRecord(DateTime.Now.AddDays(-2),"Иванов",10,"Иванов2"),
-            new TimeRecord(DateTime.Now.AddDays(-2),"Петров",5,"Петров2"),
+            new TimeRecord(DateTime.Now.Date.AddDays(-3),"Иванов",8,"Иванов1"),
+            new TimeRecord(DateTime.Now.Date.AddDays(-3),"Петров",8,"Петров1"),
+            new TimeRecord(DateTime.Now.Date.AddDays(-2),"Иванов",10,"Иванов2"),
+            new TimeRecord(DateTime.Now.Date.AddDays(-2),"Петров",5,"Петров2"),
         };
         
         List<TimeRecord> freelansers = new List<TimeRecord>() {
-            new TimeRecord(DateTime.Now.AddDays(-3),"Бонд",6,"Бонд1"),
-            new TimeRecord(DateTime.Now.AddDays(-3),"Смит",9,"Смит1"),
-            new TimeRecord(DateTime.Now.AddDays(-2),"Бонд",10,"Бонд2"),
-            new TimeRecord(DateTime.Now.AddDays(-2),"Смит",5,"Смит2"),
+            new TimeRecord(DateTime.Now.Date.AddDays(-3),"Бонд",6,"Бонд1"),
+            new TimeRecord(DateTime.Now.Date.AddDays(-3),"Смит",9,"Смит1"),
+            new TimeRecord(DateTime.Now.Date.AddDays(-2),"Бонд",10,"Бонд2"),
+            new TimeRecord(DateTime.Now.Date.AddDays(-2),"Смит",5,"Смит2"),
         };
 
         List<TimeRecord> managers = new List<TimeRecord>() {
-            new TimeRecord(DateTime.Now.AddDays(-3),"Борк",11,"Борк1"),
-            new TimeRecord(DateTime.Now.AddDays(-2),"Борк",4,"Борк2"),
+            new TimeRecord(DateTime.Now.Date.AddDays(-3),"Борк",11,"Борк1"),
+            new TimeRecord(DateTime.Now.Date.AddDays(-2),"Борк",4,"Борк2"),
         };
         
         List<User> users = new List<User>() 
@@ -45,7 +45,6 @@ namespace ZAW.SalaryCalculationConsole.Persistence
             return emploees;
         }
 
-        
         public List<TimeRecord> Freelansers()
         {
             return freelansers;
@@ -74,13 +73,13 @@ namespace ZAW.SalaryCalculationConsole.Persistence
                     throw new NotImplementedException("Новая роль");
             }
 
-            if (from == null) from = DateTime.Now.AddYears(-100);
-            if (to == null) to = DateTime.Now;
+            if (from == null) from = DateTime.Now.Date.AddYears(-100);
+            if (to == null) to = DateTime.Now.Date;
             
-            return records.Where(x => from.Value > x.Date && x.Date <= to.Value).ToList();
+            return records.Where(x => from.Value <= x.Date && x.Date <= to.Value).ToList();
         }
 
-        public List<TimeRecord> ReportGetByUserp(string userName, UserRole userRole, DateTime? from = null, DateTime? to = null)
+        public List<TimeRecord> ReportGetByUser(string userName, UserRole userRole, DateTime? from = null, DateTime? to = null)
         {
             return ReportGet(userRole, from, to).Where(x => x.Name == userName).ToList();
         }
@@ -119,7 +118,7 @@ namespace ZAW.SalaryCalculationConsole.Persistence
             
         }
 
-        public User UserGet(string name)
+        public User? UserGet(string name)
         {
             return Users().FirstOrDefault(x => x.Name == name);
         }

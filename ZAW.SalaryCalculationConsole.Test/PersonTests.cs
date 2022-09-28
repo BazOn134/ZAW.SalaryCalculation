@@ -3,7 +3,7 @@ using ZAW.SalaryCalculationConsole.Domain;
 
 namespace ZAW.SalaryCalculationConsole.Test
 {
-    public class Tests
+    public class PersonTests
     {
         [SetUp]
         public void Setup()

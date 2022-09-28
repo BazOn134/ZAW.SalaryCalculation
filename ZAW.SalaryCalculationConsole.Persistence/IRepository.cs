@@ -10,7 +10,7 @@ namespace ZAW.SalaryCalculationConsole.Persistence
         List<TimeRecord> Managers();
         List<TimeRecord> Freelansers();
         
-        /// <summary>Создание пользователя</summary>
+        /// <summary>Создание нового пользователя</summary>
         /// <param name="Роль пользователя"></param>
         /// <param name="Имя пользователя"></param>
         bool UserCreate(UserRole userRole, string name);
@@ -18,7 +18,7 @@ namespace ZAW.SalaryCalculationConsole.Persistence
         /// <summary>Получение пользователя</summary>
         /// <param name="Имя пользователя"></param>
         /// <returns></returns>
-        User UserGet(string name);
+        User? UserGet(string name);
         
         void TimeRecordAdd(UserRole userRole, TimeRecord timeRecord);
         
@@ -35,6 +35,6 @@ namespace ZAW.SalaryCalculationConsole.Persistence
         /// <param name="Дата начала периода"></param>
         /// <param name="Дата окончания периода"></param>
         /// <returns></returns>
-        List<TimeRecord> ReportGetByUserp(string userName, UserRole userRole, DateTime? from = null, DateTime? to = null);
+        List<TimeRecord> ReportGetByUser(string userName, UserRole userRole, DateTime? from = null, DateTime? to = null);
     }
 }
